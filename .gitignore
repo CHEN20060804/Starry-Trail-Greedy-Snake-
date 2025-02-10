@@ -1,6 +1,7 @@
 # Build and Release Folders
 # Visual Studio 特殊文件
 .vs/
+x64/
 
 # 编译的目标文件
 *.slo
