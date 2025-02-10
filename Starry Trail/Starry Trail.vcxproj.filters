@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="func_definition.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="functions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Starry Trail.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\music\fireflies.mp3" />
+    <Media Include="assets\music\520AM.mp3" />
+    <Media Include="assets\music\N.mp3" />
+    <Media Include="assets\music\太好了！.mp3" />
+    <Media Include="assets\music\24kGoldn,iann dior - Mood.mp3" />
+    <Media Include="assets\music\Acreix - Visions.mp3" />
+    <Media Include="assets\music\Calvin Harris - I%27m Not Alone (Radio Edit).mp3" />
+    <Media Include="assets\music\Calvin Harris,Ayah Marar - Thinking About You.mp3" />
+    <Media Include="assets\music\Calvin Harris,Dua Lipa - One Kiss.mp3" />
+    <Media Include="assets\music\FLuoRiTe - NYA!!!.mp3" />
+    <Media Include="assets\music\轻松之地.mp3" />
+    <Media Include="assets\Gloria Kim - Winter Without You.mp3" />
+    <Media Include="assets\Jake Miller - Rumors.mp3" />
+    <Media Include="assets\Mr Chip - Lumen.mp3" />
+    <Media Include="assets\PIKASONIC,なこたんまる - 海底列車.mp3" />
+    <Media Include="assets\林俊杰 - Always Online.mp3" />
+    <Media Include="assets\三亩地 - 寻.mp3" />
+    <Media Include="assets\music\Dio Deer,Evanti3s - Dream.mp3" />
+    <Media Include="assets\music\CDM Project - Timber.mp3" />
+    <Media Include="assets\music\四季音色 - 雨夜.mp3" />
+    <Media Include="assets\music\G.E.M.邓紫棋 - 唯一.mp3" />
+    <Media Include="assets\music\Nyte - Pluto.mp3" />
+    <Media Include="assets\music\Plum - Melodic Artist - Skyscape.mp3" />
+    <Media Include="assets\music\Toby Fox - His Theme.mp3" />
+    <Media Include="assets\music\蒋小呢 - 给你呀（又名：for ya）.mp3" />
+    <Media Include="assets\music\梨冻紧,Wiz_H张子豪 - 罗生门（Follow）.mp3" />
+    <Media Include="assets\music\路灰气球 - 아름다운 그대여【钢琴】.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\myico.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

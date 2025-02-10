@@ -1,18 +1,103 @@
 # Build and Release Folders
+# Visual Studio 特殊文件
+.vs/
+
+# 编译的目标文件
+*.slo
+*.lo
+*.o
+*.obj
+
+# 预编译头文件
+*.gch
+*.pch
+
+# 编译的动态库
+*.so
+*.dylib
+*.dll
+
+# 编译的静态库
+*.lai
+*.la
+*.a
+*.lib
+
+# 可执行文件
+*.exe
+*.out
+*.app
+
+# 调试文件
+*.dSYM/
+*.su
+*.idb
+*.pdb
+*.mod
+
+# IDE 特定文件
+.vscode/
+.idea/
+*.code-workspace
+
+# 日志和数据库文件
+*.log
+*.sql
+*.sqlite
+
+# 操作系统生成的文件
+.DS_Store
+Thumbs.db
+
+# 备份文件
+*.bak
+*.swp
+*.swo
+*.tmp
+
+# 临时文件
+*.temp
+*.tmp
+*.temp~
+*.tmp~
+
+# 构建目录
+build/
+cmake-build-*/
+
+# 其他
+*.user
+*.rsrc
+*.aps
+*.ncb
+*.opt
+*.plg
+*.sdf
+*.ilk
+*.ipch
+*.pdb
+*.obj
+*.idb
+*.tlog
+*.lastbuildstate
+*.suo
+*.sln.docstates
 bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
 
-# Other files and folders
+# 其他文件和文件夹
 .settings/
 
-# Executables
+# 可执行文件
 *.swf
 *.air
 *.ipa
 *.apk
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# 项目文件，例如 `.project`、`.actionScriptProperties` 和 `.flexProperties`
+# 不应被排除，因为它们包含编译器设置和 Eclipse / Flash Builder 的其他重要信息。
+
+# 资源文件
+*.res
