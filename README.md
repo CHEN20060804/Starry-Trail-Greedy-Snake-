@@ -19,4 +19,6 @@
 2. 请先将音乐添加到资源文件中，查看.rc文件中的ID对应音乐是否匹配，再编译
 
 有疑问咨询作者：3420929084@qq.com
-![用户界面](image.png)
+![image-20250214221712936](C:\Users\37775\AppData\Roaming\Typora\typora-user-images\image-20250214221712936.png)
+
+![image-20250214221622169](C:\Users\37775\AppData\Roaming\Typora\typora-user-images\image-20250214221622169.png)
