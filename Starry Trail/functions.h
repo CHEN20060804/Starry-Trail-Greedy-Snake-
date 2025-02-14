@@ -6,7 +6,7 @@
 #include <mmsystem.h>
 #pragma comment(lib,"winmm.lib")
 
-
+//全局常量
 constexpr int H = 30;
 constexpr int W = 44;
 constexpr int Size = 20;
@@ -18,13 +18,13 @@ constexpr int dir[4][2]=//方向数组
 	{1, 0},//下
 	{0, -1}//左
 }; 
-constexpr std::string filename = "maxscore.txt";
+constexpr const char* filename = "maxscore.txt";
 
 enum blockType
 {
 	EMPTY = 0,
 	FOOD1 = 1,
-	FOOD4 = 4,
+	FOOD4 = 4
 };
 
 struct Map
@@ -76,7 +76,6 @@ extern button buttonNext;
 extern button buttonStopMusic;
 extern button buttonMusic[50];
 extern Star star[STARS];
-
 
 void InitStar(int i);
 

@@ -592,7 +592,7 @@ void initMusicButton(button buttonMusic[])
 	musicNum = 27;
 }
 
-bool fileExists(const std::string& filename)
+bool fileExists(const char* filename)
 {
 	std::ifstream file(filename);
 	return file.good();
