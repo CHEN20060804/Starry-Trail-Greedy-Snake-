@@ -19,4 +19,4 @@
 2. 请先将音乐添加到资源文件中，查看.rc文件中的ID对应音乐是否匹配，再编译
 
 有疑问咨询作者：3420929084@qq.com
-![输入图片说明](Starry%20Trail/assets/image1.png)
+![输入图片说明](Starry%20Trail/assets/image.png)
