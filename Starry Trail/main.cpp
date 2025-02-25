@@ -6,11 +6,11 @@
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
 	initgraph(W * Size, H * Size);
-	title();
+	title();//设置标题
 	srand(time(0));
 	Snake snake;
 	Map map;
-	int moveTime = 110;
+	int moveTime = 110;//移动时间间隔
 	std::thread background(drawstar);//开启绘制背景星空的线程
 	while (1)
 	{

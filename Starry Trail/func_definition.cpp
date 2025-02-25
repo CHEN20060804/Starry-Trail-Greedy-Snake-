@@ -8,6 +8,7 @@ int maxScore = 0;//最高分
 int musicNum = 0;//背景音乐数量，初始化为0
 bool isExitGame = false;//控制星空线程退出
 Star star[STARS];
+COLORREF color[30][30];//颜色数组,用于画渐变的蛇身
 
 ExMessage msg;
 button button1 = { 100,100,200,50,L"开始游戏" };
@@ -114,27 +115,8 @@ void drawLine()//画网格线
 
 void drawBody(const Pos& p)//画渐变的蛇身方块
 {
-	int cx = p.x * Size + Size / 2;
-	int cy = p.y * Size + Size / 2;
-	int radius = 10;       // 圆半径
-	COLORREF outerColor = RGB(255, 255, 255); // 外部颜色（白色）
-	COLORREF innerColor = RGB(64, 64, 64);    // 内部颜色（浅黑色）
-	// 逐像素绘制渐变圆
-	for (int x = cx - radius; x <= cx + radius; ++x) {
-		for (int y = cy - radius; y <= cy + radius; ++y) {
-			int dx = x - cx;
-			int dy = y - cy;
-			double distance = sqrt(dx * dx + dy * dy);
-			if (distance <= radius) {
-				double ratio = distance / radius;
-				int r = GetRValue(innerColor) + (GetRValue(outerColor) - GetRValue(innerColor)) * ratio;
-				int g = GetGValue(innerColor) + (GetGValue(outerColor) - GetGValue(innerColor)) * ratio;
-				int b = GetBValue(innerColor) + (GetBValue(outerColor) - GetBValue(innerColor)) * ratio;
-				putpixel(x, y, RGB(r, g, b));
-			}
-		}
-	}
-
+	setfillcolor(RGB(206, 240, 240));
+	fillroundrect(p.x * Size, p.y * Size, p.x * Size + Size, p.y * Size + Size, 10, 10);
 }
 
 void drawHead(const Pos& p)//画白色的蛇头
@@ -145,10 +127,10 @@ void drawHead(const Pos& p)//画白色的蛇头
 
 void initSnake(Snake& snk)
 {
-	snk.snake[0] = { W / 2 ,H / 2 };
-	snk.snake[1] = { W / 2 - 1 ,H / 2 };
-	snk.snake[2] = { W / 2 - 2,H / 2 };
-	snk.snakeLength = 3;
+	snk.snake.clear();
+	snk.snake.push_back({ W / 2 ,H / 2 });
+	snk.snake.push_back({ W / 2 - 1 ,H / 2 });
+	snk.snake.push_back({ W / 2 - 2,H / 2 });
 	snk.snakeDir = 1;
 	drawHead(snk.snake[0]);
 	drawBody(snk.snake[1]);
@@ -196,7 +178,7 @@ void checkChangeDir(Snake& snk)
 
 bool checkHitSelf(const Pos& p, const Snake& snk)
 {
-	for (int i = 3; i < snk.snakeLength; i++)
+	for (int i = 3; i < snk.snake.size(); i++)
 	{
 		if (snk.snake[i].x == p.x && snk.snake[i].y == p.y)
 		{
@@ -211,7 +193,7 @@ void checkEatFood(Map& map, Snake& snk, const Pos& tail)
 	Pos head = snk.snake[0];
 	if (map.data[head.y][head.x] == FOOD1 || map.data[head.y][head.x] == FOOD4)
 	{
-		snk.snake[snk.snakeLength++] = tail;
+		snk.snake.push_back(tail);
 		map.hasfood = false;
 		if (map.data[head.y][head.x] == FOOD1)
 		{
@@ -228,13 +210,10 @@ void checkEatFood(Map& map, Snake& snk, const Pos& tail)
 
 void moveSnake(Map& map, Snake& snk)
 {
-	// 移动蛇身
-	for (int i = snk.snakeLength - 1; i > 0; i--)
-	{
-		snk.snake[i] = snk.snake[i - 1];
-	}
-	snk.snake[0].x += dir[snk.snakeDir][1];
-	snk.snake[0].y += dir[snk.snakeDir][0];
+	snk.snake.pop_back();
+	int newX = snk.snake[0].x + dir[snk.snakeDir][1];
+	int newY = snk.snake[0].y + dir[snk.snakeDir][0];
+	snk.snake.push_front({ newX, newY });
 	//处理蛇头碰撞到边界的情况
 	if (snk.snake[0].x < 0)
 	{
@@ -261,7 +240,8 @@ void moveSnake(Map& map, Snake& snk)
 
 bool doMove(Map& map, Snake& snk)
 {
-	Pos tail = snk.snake[snk.snakeLength - 1];
+	Timer t;
+	Pos tail = snk.snake[snk.snake.size() - 1];
 	setfillcolor(BLACK);
 	setlinecolor(RGB(30, 30, 30));
 	fillrectangle(tail.x * Size, tail.y * Size, tail.x * Size + Size, tail.y * Size + Size);
@@ -271,7 +251,6 @@ bool doMove(Map& map, Snake& snk)
 		return false;
 	}
 	checkEatFood(map, snk, tail);
-	setfillcolor(WHITE);
 	drawHead(snk.snake[0]);
 	drawBody(snk.snake[1]);
 	return true;
@@ -290,7 +269,7 @@ void setFood(Map& map, Snake& snk, const int& score)
 			n = rand() % H;
 			int i = 0;
 			//判断食物是否与蛇身重合
-			while (i < snk.snakeLength)
+			while (i < snk.snake.size())
 			{
 				if (snk.snake[i].x == m && snk.snake[i].y == n)
 				{
@@ -298,7 +277,7 @@ void setFood(Map& map, Snake& snk, const int& score)
 				}
 				i++;
 			}
-			if (i == snk.snakeLength)//食物与蛇身不重合
+			if (i == snk.snake.size())//食物与蛇身不重合
 			{
 				map.hasfood = true;
 				if (foodCount % 4 == 0 && foodCount)
@@ -506,8 +485,8 @@ void aboutUs()
 		{
 			setbkmode(TRANSPARENT);
 			peekmessage(&msg, EX_MOUSE);
-			setfillcolor(BLACK);
 			settextstyle(15, 0, L"黑体", 0, 0, 0, 0, 0, 0);
+			setfillcolor(BLACK);
 			BeginBatchDraw();
 			showOpenSource(rect);
 			showAllMusic1(rectmusic1);

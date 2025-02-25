@@ -4,8 +4,30 @@
 #include <fstream>
 #include <easyx.h>
 #include <mmsystem.h>
+#include <deque>
+#include <chrono>
 #pragma comment(lib,"winmm.lib")
 
+
+
+class Timer
+{
+	std::chrono::high_resolution_clock::time_point start;
+	std::chrono::high_resolution_clock::time_point end;
+public:
+	Timer()
+	{
+		start = std::chrono::high_resolution_clock::now();
+	}
+	~Timer()
+	{
+		end = std::chrono::high_resolution_clock::now();
+		auto start_time = std::chrono::time_point_cast<std::chrono::microseconds>(start).time_since_epoch().count();
+		auto end_time = std::chrono::time_point_cast<std::chrono::microseconds>(end).time_since_epoch().count();
+		auto duration = end_time - start_time;
+		//std::cout << "Time taken by the code block: " << duration << " microseconds" << std::endl;
+	}
+};
 //全局常量
 constexpr int H = 30;
 constexpr int W = 44;
@@ -41,8 +63,7 @@ struct Pos
 
 struct Snake
 {
-	Pos snake[H * W];
-	int snakeLength;
+	std::deque<Pos> snake;
 	short snakeDir;
 };
 
@@ -76,6 +97,7 @@ extern button buttonNext;
 extern button buttonStopMusic;
 extern button buttonMusic[50];
 extern Star star[STARS];
+extern COLORREF color[30][30];
 
 void InitStar(int i);
 
@@ -131,7 +153,7 @@ void aboutUs();
 
 bool exitGame();
 
-bool fileExists(const std::string& filename);
+bool fileExists(const char* filename);
 
 void saveScore();
 
