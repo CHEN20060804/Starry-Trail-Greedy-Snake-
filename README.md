@@ -23,3 +23,31 @@
 
 ![image](https://github.com/user-attachments/assets/96501f13-cc16-4f01-9b5f-51c8ce8e82c5)
 
+=======
+# Starry Trail（贪吃蛇）
+
+#### 介绍
+具有用户界面的贪吃蛇游戏，使用easyX绘制
+
+#### 游戏特色
+
+1.  具有音乐播放功能，提供27个音乐作为bgm（资源来自网易云音乐）
+2.  具有动态星空背景
+3.  精美的GUI
+4.  记录最高分
+5.  渐变的蛇身方块
+
+#### 游玩说明
+吃食物获得分数，可以穿越边界回到另一侧，撞到蛇身则游戏结束
+
+#### 构建注意事项
+1. 请确保安装了<easyx.h>
+2. 请先将音乐添加到资源文件中，查看.rc文件中的ID对应音乐是否匹配，再编译
+
+有疑问咨询作者：3420929084@qq.com
+
+![image](https://github.com/user-attachments/assets/ec2c6e42-de21-4723-8153-125ac2cdc1e8)
+
+![image](https://github.com/user-attachments/assets/96501f13-cc16-4f01-9b5f-51c8ce8e82c5)
+
+>>>>>>> 2617462c10ece5f8e68833bd50cfd09f5d2ed407
