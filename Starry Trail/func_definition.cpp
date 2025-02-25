@@ -8,7 +8,6 @@ int maxScore = 0;//最高分
 int musicNum = 0;//背景音乐数量，初始化为0
 bool isExitGame = false;//控制星空线程退出
 Star star[STARS];
-COLORREF color[30][30];//颜色数组,用于画渐变的蛇身
 
 ExMessage msg;
 button button1 = { 100,100,200,50,L"开始游戏" };
@@ -240,7 +239,6 @@ void moveSnake(Map& map, Snake& snk)
 
 bool doMove(Map& map, Snake& snk)
 {
-	Timer t;
 	Pos tail = snk.snake[snk.snake.size() - 1];
 	setfillcolor(BLACK);
 	setlinecolor(RGB(30, 30, 30));
